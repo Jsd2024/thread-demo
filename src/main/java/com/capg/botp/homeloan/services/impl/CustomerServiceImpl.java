@@ -3,7 +3,6 @@ package com.capg.botp.homeloan.services.impl;
 import java.util.List;
 
 import com.capg.botp.homeloan.dao.CustomerRepository;
-import com.capg.botp.homeloan.exceptions.CustomerAlreadyRegisteredException;
 import com.capg.botp.homeloan.exceptions.CustomerNotFoundException;
 import com.capg.botp.homeloan.models.Customer;
 import org.slf4j.Logger;
@@ -14,7 +13,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import com.loan.services.iCustomerService;
+import com.capg.botp.homeloan.services.iCustomerService;
 
 
 @Service
@@ -28,11 +27,11 @@ public class CustomerServiceImpl implements  iCustomerService{
 
     @Override
     public Customer addCustomer(Customer c) {
-        Customer customer = customerDao.checkCustomer(c.getEmail(), c.getAdhaar(), c.getPan(), c.getPhone());
-        if (customer != null) {
-            throw new CustomerAlreadyRegisteredException("Customer Already Registered: " + customer.getId());
-        }
-        return customerDao.save(customer);
+//        Customer customer = customerDao.checkCustomer(c.getEmail(), c.getAdhaar(), c.getPan(), c.getPhone());
+//        if (customer != null) {
+//            throw new CustomerAlreadyRegisteredException("Customer Already Registered: " + customer.getId());
+//        }
+        return customerDao.save(c);
     }
 
     @Override
